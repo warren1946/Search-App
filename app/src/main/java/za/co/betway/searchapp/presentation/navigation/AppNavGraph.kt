@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import za.co.betway.searchapp.domain.model.Author
 import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.ui.detail.DetailScreen
 import za.co.betway.searchapp.presentation.ui.search.SearchScreen
@@ -38,19 +37,16 @@ fun AppNavGraph(
         }
         composable("search") {
             SearchScreen(
-                onNavigateDetail = { id ->
-                    navController.navigate("detail/$id")
+                onNavigateDetail = { question ->
+                    navController.navigateToDetail(question)
                 },
                 onMenuClick = {
                     // TODO: hook up drawer or menu action
                 }
             )
         }
-        composable("detail/{id}") { backStackEntry ->
-            val id = backStackEntry.arguments?.getString("id")?.toLongOrNull() ?: return@composable
-            // TODO: fetch from repository
-            val dummyQuestion = Question(id, "Title", "Body", 0, 0, 0, false, Author("User", null, ""), "", creationDate = 1558957289)
-            DetailScreen(question = dummyQuestion)
+        composable("detail") { _ ->
+            DetailScreen(question = navController.previousBackStackEntry?.savedStateHandle?.get<Question>(QUESTION_ARG_KEY) ?: return@composable)
         }
     }
 }

@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.theme.surfaceDimDarkHighContrast
 import za.co.betway.searchapp.presentation.ui.common.DefaultAppScreen
 import za.co.betway.searchapp.presentation.ui.search.component.SearchResultItem
@@ -29,7 +30,7 @@ import za.co.betway.searchapp.presentation.ui.search.component.SearchTopAppBar
 @Composable
 fun SearchScreen(
     viewModel: SearchViewModel = hiltViewModel(),
-    onNavigateDetail: (Long) -> Unit,
+    onNavigateDetail: (Question) -> Unit,
     onMenuClick: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -62,7 +63,7 @@ fun SearchScreen(
                                 SearchResultItem(
                                     question = question,
                                     modifier = Modifier
-                                        .clickable { onNavigateDetail(question.id) }
+                                        .clickable { onNavigateDetail(question) }
                                         .padding(vertical = 4.dp)
                                 )
                                 HorizontalDivider(

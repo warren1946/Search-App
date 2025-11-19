@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 Warren Mtawu.
+ * Open Source under the MIT License.
+ * Permission granted for use, modification, and distribution with attribution.
+ * No warranty provided.
+ */
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -7,6 +14,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     kotlin("kapt")
+    kotlin("plugin.parcelize")
 }
 
 hilt {

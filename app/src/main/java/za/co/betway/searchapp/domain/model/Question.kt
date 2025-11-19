@@ -7,6 +7,10 @@
 
 package za.co.betway.searchapp.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Question(
     val id: Long,
     val title: String,
@@ -18,4 +22,4 @@ data class Question(
     val author: Author,
     val link: String,
     val creationDate: Long
-)
+) : Parcelable
