@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 Warren Mtawu.
+ * Open Source under the MIT License.
+ * Permission granted for use, modification, and distribution with attribution.
+ * No warranty provided.
+ */
+
 package za.co.betway.searchapp
 
 import org.junit.Assert.assertEquals
@@ -22,7 +29,8 @@ class AppExtensionFunctionsTest {
             score = 10,
             isAnswered = true,
             owner = OwnerDto("Warren", "image.png", "link"),
-            link = "questionLink"
+            link = "questionLink",
+            creationDate = 1575679448
         )
 
         val domain = dto.toDomain()

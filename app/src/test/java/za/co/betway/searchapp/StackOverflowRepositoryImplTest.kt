@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 Warren Mtawu.
+ * Open Source under the MIT License.
+ * Permission granted for use, modification, and distribution with attribution.
+ * No warranty provided.
+ */
+
 package za.co.betway.searchapp
 
 import io.mockk.coEvery
@@ -32,7 +39,8 @@ class StackOverflowRepositoryImplTest {
             score = 5,
             isAnswered = true,
             owner = OwnerDto("User", null, "link"),
-            link = "link"
+            link = "link",
+            creationDate = 1575679448
         )
 
         coEvery { api.searchQuestions(title = "Kotlin") } returns SearchResponse(listOf(dto))
