@@ -87,6 +87,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.junit.ktx)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.compose.ui.text.google.fonts)
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.room.runtime)
