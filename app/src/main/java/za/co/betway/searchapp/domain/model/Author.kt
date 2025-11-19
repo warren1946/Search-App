@@ -1,4 +1,7 @@
 package za.co.betway.searchapp.domain.model
 
-class Author {
-}
+data class Author(
+    val name: String,
+    val profileImage: String?,
+    val link: String
+)

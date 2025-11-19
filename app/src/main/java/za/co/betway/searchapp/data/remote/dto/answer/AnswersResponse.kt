@@ -1,4 +1,3 @@
 package za.co.betway.searchapp.data.remote.dto.answer
 
-class AnswersResponse {
-}
+data class AnswersResponse(val items: List<AnswerDto>)
