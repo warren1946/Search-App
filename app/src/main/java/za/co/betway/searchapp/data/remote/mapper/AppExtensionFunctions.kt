@@ -1,4 +1,4 @@
-package za.co.betway.searchapp.data.remote.dto
+package za.co.betway.searchapp.data.remote.mapper
 
 import za.co.betway.searchapp.data.remote.dto.answer.AnswerDto
 import za.co.betway.searchapp.data.remote.dto.search.QuestionDto
