@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 Warren Mtawu.
+ * Open Source under the MIT License.
+ * Permission granted for use, modification, and distribution with attribution.
+ * No warranty provided.
+ */
+
 package za.co.betway.searchapp
 
 import io.mockk.coEvery
@@ -28,7 +35,8 @@ class SearchQuestionsUseCaseTest {
             votes = 10,
             isAnswered = true,
             author = Author("User", null, "link"),
-            link = "link"
+            link = "link",
+            creationDate = 1575679448
         )
 
         coEvery { repository.searchQuestions("Kotlin") } returns listOf(question)

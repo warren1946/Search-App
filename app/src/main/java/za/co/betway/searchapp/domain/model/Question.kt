@@ -1,5 +1,16 @@
+/*
+ * Copyright (c) 2025 Warren Mtawu.
+ * Open Source under the MIT License.
+ * Permission granted for use, modification, and distribution with attribution.
+ * No warranty provided.
+ */
+
 package za.co.betway.searchapp.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Question(
     val id: Long,
     val title: String,
@@ -9,5 +20,6 @@ data class Question(
     val votes: Int,
     val isAnswered: Boolean,
     val author: Author,
-    val link: String
-)
+    val link: String,
+    val creationDate: Long
+) : Parcelable
