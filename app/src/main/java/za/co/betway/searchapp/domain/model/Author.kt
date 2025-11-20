@@ -14,5 +14,6 @@ import kotlinx.parcelize.Parcelize
 data class Author(
     val name: String,
     val profileImage: String?,
-    val link: String
+    val link: String,
+    val reputation: Int
 ) : Parcelable

@@ -38,9 +38,12 @@ class StackOverflowRepositoryImplTest {
             viewCount = 50,
             score = 5,
             isAnswered = true,
-            owner = OwnerDto("User", null, "link"),
+            owner = OwnerDto(
+                "User", null, "link", reputation = 176
+            ),
             link = "link",
-            creationDate = 1575679448
+            creationDate = 1575679448,
+            tags = listOf()
         )
 
         coEvery { api.searchQuestions(title = "Kotlin") } returns SearchResponse(listOf(dto))
@@ -59,7 +62,10 @@ class StackOverflowRepositoryImplTest {
             body = "Answer body",
             score = 3,
             isAccepted = true,
-            owner = OwnerDto("User", null, "link")
+            owner = OwnerDto(
+                "User", null, "link", reputation = 565
+            ),
+            creationDate = 1575679448
         )
 
         coEvery { api.getAnswers(1) } returns AnswersResponse(listOf(dto))

@@ -96,15 +96,16 @@ fun SearchResultItemPreview() {
         SearchResultItem(
             question = Question(
                 id = 77053797,
+                tags = listOf(),
                 title = "Java virtual threads vs Kotlin coroutines",
                 body = "<p>In Kotlin I can:</p>\n\n<pre><code>val (specificMembers, regularMembers) = members.partition {it is SpecificMember}\n</code></pre>\n\n<p>However to my knowledge I can not do something like:</p>\n\n<pre><code>val (specificMembers as List&lt;SpecificMember&gt;, regularMembers) = members.partition {it is SpecificMember}\n</code></pre>\n\n<p>My question would be - is there's an idiomatic way to partition iterable by class and typecast it those partitioned parts if needed. </p>\n",
                 answersCount = 5,
                 views = 22160,
                 votes = 37,
                 isAnswered = true,
-                author = Author("Mahozad", profileImage = null, link = ""),
+                author = Author("Mahozad", profileImage = null, link = "", reputation = 2345),
                 link = "https://stackoverflow.com/questions/77053797/java-virtual-threads-vs-kotlin-coroutines",
-                creationDate = 1694017779L // sample epoch
+                creationDate = 1694017779L
             )
         )
     }

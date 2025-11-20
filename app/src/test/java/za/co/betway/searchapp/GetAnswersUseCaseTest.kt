@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 Warren Mtawu.
+ * Open Source under the MIT License.
+ * Permission granted for use, modification, and distribution with attribution.
+ * No warranty provided.
+ */
+
 package za.co.betway.searchapp
 
 import io.mockk.coEvery
@@ -23,7 +30,10 @@ class GetAnswersUseCaseTest {
                 body = "Answer body",
                 votes = 5,
                 isAccepted = true,
-                author = Author(name = "Warren", profileImage = null, link = "link")
+                author = Author(
+                    name = "Warren", profileImage = null, link = "link", reputation = 453
+                ),
+                creationDate = 53138172L
             )
         )
 

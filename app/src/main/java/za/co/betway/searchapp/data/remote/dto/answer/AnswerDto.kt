@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 Warren Mtawu.
+ * Open Source under the MIT License.
+ * Permission granted for use, modification, and distribution with attribution.
+ * No warranty provided.
+ */
+
 package za.co.betway.searchapp.data.remote.dto.answer
 
 import com.squareup.moshi.Json
@@ -9,5 +16,6 @@ data class AnswerDto(
     val body: String,
     val score: Int,
     @Json(name = "is_accepted") val isAccepted: Boolean,
-    val owner: OwnerDto
+    val owner: OwnerDto,
+    @Json(name = "creation_date") val creationDate: Long
 )

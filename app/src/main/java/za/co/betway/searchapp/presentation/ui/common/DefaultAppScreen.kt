@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 Warren Mtawu.
+ * Open Source under the MIT License.
+ * Permission granted for use, modification, and distribution with attribution.
+ * No warranty provided.
+ */
+
 package za.co.betway.searchapp.presentation.ui.common
 
 import androidx.compose.foundation.background
@@ -9,53 +16,45 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import za.co.betway.searchapp.R
 import za.co.betway.searchapp.presentation.theme.AppTypography
-import za.co.betway.searchapp.presentation.theme.backgroundLight
 import za.co.betway.searchapp.presentation.theme.inverseSurfaceLightMediumContrast
+import za.co.betway.searchapp.presentation.theme.onTertiaryDark
+import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
 
 @Composable
 fun DefaultAppScreen(
     message: String,
     showProgress: Boolean = false,
-    iconResource: Int = R.drawable.logo,
     onActionClick: (() -> Unit)? = null,
     actionLabel: String? = null
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(backgroundLight),
-        contentAlignment = Alignment.Center
+            .background(surfaceContainerLowestLight),
+        contentAlignment = Alignment.TopCenter
     ) {
         Column(
             modifier = Modifier
                 .padding(10.dp)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Top
         ) {
+            Spacer(modifier = Modifier.height(20.dp))
             if (showProgress) {
                 CircularProgressIndicator(color = inverseSurfaceLightMediumContrast)
             } else {
-                Icon(
-                    painter = painterResource(id = iconResource),
-                    contentDescription = null,
-                    tint = inverseSurfaceLightMediumContrast,
-                    modifier = Modifier.size(width = 180.dp, height = 70.dp)
-                )
+                Spacer(modifier = Modifier.height(40.dp))
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -63,8 +62,8 @@ fun DefaultAppScreen(
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = message,
-                color = inverseSurfaceLightMediumContrast,
-                style = AppTypography.bodyLarge,
+                color = onTertiaryDark,
+                style = AppTypography.headlineSmall,
                 textAlign = TextAlign.Center
             )
 
@@ -81,5 +80,5 @@ fun DefaultAppScreen(
 @Preview(showBackground = true)
 @Composable
 fun DefaultAppScreenPreview() {
-    DefaultAppScreen("Loading...")
+    DefaultAppScreen("Loading...", showProgress = false)
 }
