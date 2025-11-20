@@ -19,15 +19,21 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
 import za.co.betway.searchapp.presentation.theme.surfaceDimDarkHighContrast
 import za.co.betway.searchapp.presentation.ui.common.DefaultAppScreen
+import za.co.betway.searchapp.presentation.ui.common.NoInternetDialog
 import za.co.betway.searchapp.presentation.ui.search.component.SearchResultItem
 import za.co.betway.searchapp.presentation.ui.search.component.SearchTopAppBar
+import za.co.betway.searchapp.presentation.utils.NetworkUtils
 
 @Composable
 fun SearchScreen(
@@ -37,6 +43,12 @@ fun SearchScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val query by viewModel.query.collectAsState()
+    val context = LocalContext.current
+    var showNoInternetDialog by remember { mutableStateOf(false) }
+
+    if (showNoInternetDialog) {
+        NoInternetDialog(onDismiss = { showNoInternetDialog = false })
+    }
 
     Column(
         modifier = Modifier
@@ -45,7 +57,13 @@ fun SearchScreen(
     ) {
         SearchTopAppBar(
             query = query,
-            onQueryChange = { newQuery -> viewModel.updateQuery(newQuery) },
+            onQueryChange = { newQuery ->
+                if (NetworkUtils.hasInternetConnection(context)) {
+                    viewModel.updateQuery(newQuery)
+                } else {
+                    showNoInternetDialog = true
+                }
+            },
             onClearClick = { viewModel.updateQuery("") },
             onMenuClick = onMenuClick
         )
