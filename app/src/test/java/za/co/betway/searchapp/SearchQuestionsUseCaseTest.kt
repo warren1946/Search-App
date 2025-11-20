@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2025 Warren Mtawu.
- * Open Source under the MIT License.
- * Permission granted for use, modification, and distribution with attribution.
+ * Copyright (c) 2025 Warren Mtawu. 
+ * Open Source under the MIT License.  
+ * Permission granted for use, modification, and distribution with attribution.  
  * No warranty provided.
  */
 
@@ -34,9 +34,12 @@ class SearchQuestionsUseCaseTest {
             views = 100,
             votes = 10,
             isAnswered = true,
-            author = Author("User", null, "link"),
+            author = Author(
+                "User", null, "link", reputation = 342
+            ),
             link = "link",
-            creationDate = 1575679448
+            creationDate = 1575679448,
+            tags = listOf()
         )
 
         coEvery { repository.searchQuestions("Kotlin") } returns listOf(question)

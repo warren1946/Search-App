@@ -46,7 +46,13 @@ fun AppNavGraph(
             )
         }
         composable("detail") { _ ->
-            DetailScreen(question = navController.previousBackStackEntry?.savedStateHandle?.get<Question>(QUESTION_ARG_KEY) ?: return@composable)
+            DetailScreen(
+                question = navController.previousBackStackEntry
+                    ?.savedStateHandle
+                    ?.get<Question>(QUESTION_ARG_KEY)
+                    ?: return@composable,
+                onBackClick = { navController.popBackStack() }
+            )
         }
     }
 }

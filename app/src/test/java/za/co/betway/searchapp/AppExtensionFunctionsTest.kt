@@ -28,9 +28,12 @@ class AppExtensionFunctionsTest {
             viewCount = 100,
             score = 10,
             isAnswered = true,
-            owner = OwnerDto("Warren", "image.png", "link"),
+            owner = OwnerDto(
+                "Warren", "image.png", "link", reputation = 2314
+            ),
             link = "questionLink",
-            creationDate = 1575679448
+            creationDate = 1575679448,
+            tags = listOf()
         )
 
         val domain = dto.toDomain()
@@ -49,7 +52,10 @@ class AppExtensionFunctionsTest {
             body = "Answer body",
             score = 20,
             isAccepted = false,
-            owner = OwnerDto("Copilot", null, "link")
+            owner = OwnerDto(
+                "Copilot", null, "link", reputation = 1233
+            ),
+            creationDate = 1575679448
         )
 
         val domain = dto.toDomain()

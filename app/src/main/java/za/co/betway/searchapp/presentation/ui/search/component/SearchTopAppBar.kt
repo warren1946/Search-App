@@ -36,8 +36,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import za.co.betway.searchapp.R
 import za.co.betway.searchapp.presentation.theme.AppTheme
-import za.co.betway.searchapp.presentation.theme.backgroundLight
 import za.co.betway.searchapp.presentation.theme.primaryContainerLightMediumContrast
+import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
 
 @Composable
 fun SearchTopAppBar(
@@ -49,7 +49,7 @@ fun SearchTopAppBar(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(backgroundLight)
+            .background(surfaceContainerLowestLight)
     ) {
         Row(
             modifier = Modifier

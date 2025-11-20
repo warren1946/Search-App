@@ -10,6 +10,7 @@ package za.co.betway.searchapp.data.remote.dto.search
 import com.squareup.moshi.Json
 
 data class QuestionDto(
+    val tags: List<String>,
     @Json(name = "question_id") val questionId: Long,
     val title: String,
     val body: String,

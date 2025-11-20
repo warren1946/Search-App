@@ -19,8 +19,9 @@ import za.co.betway.searchapp.presentation.theme.AppTypography
 
 @Composable
 fun HtmlText(
-    html: String,
     modifier: Modifier = Modifier,
+    html: String,
+    shouldTruncateBody: Boolean = true,
     textStyle: TextStyle = AppTypography.bodySmall
 ) {
     AndroidView(
@@ -30,8 +31,10 @@ fun HtmlText(
                 textSize = textStyle.fontSize.value
                 typeface = Typeface.DEFAULT
 
-                maxLines = 3
-                ellipsize = TextUtils.TruncateAt.END
+                if (shouldTruncateBody) {
+                    maxLines = 3
+                    ellipsize = TextUtils.TruncateAt.END
+                }
             }
         },
         update = { textView ->

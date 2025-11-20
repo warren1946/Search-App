@@ -5,7 +5,8 @@
  * No warranty provided.
  */
 
-package za.co.betway.searchapp.presentation.ui.common
+package za.co.betway.searchapp.presentation.ui.detail
 
-class Test {
+enum class AnswerFilter {
+    Active, Oldest, Votes
 }

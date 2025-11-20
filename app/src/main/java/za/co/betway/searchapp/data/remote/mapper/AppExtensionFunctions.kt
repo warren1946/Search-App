@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter
 
 fun QuestionDto.toDomain() = Question(
     id = questionId,
+    tags = tags,
     title = title,
     body = body,
     answersCount = answerCount,
@@ -27,7 +28,8 @@ fun QuestionDto.toDomain() = Question(
     author = Author(
         name = owner.displayName,
         profileImage = owner.profileImage,
-        link = owner.link
+        link = owner.link,
+        reputation = owner.reputation
     ),
     link = link,
     creationDate = creationDate
@@ -41,8 +43,10 @@ fun AnswerDto.toDomain() = Answer(
     author = Author(
         name = owner.displayName,
         profileImage = owner.profileImage,
-        link = owner.link
-    )
+        link = owner.link,
+        reputation = owner.reputation
+    ),
+    creationDate = creationDate
 )
 
 fun Question.formattedCreationDate(): String {

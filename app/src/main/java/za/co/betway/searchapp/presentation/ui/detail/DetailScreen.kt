@@ -7,71 +7,111 @@
 
 package za.co.betway.searchapp.presentation.ui.detail
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import za.co.betway.searchapp.data.remote.mapper.formattedCreationDate
 import za.co.betway.searchapp.domain.model.Question
-import za.co.betway.searchapp.presentation.theme.AppTypography
+import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
 import za.co.betway.searchapp.presentation.ui.common.DefaultAppScreen
-import za.co.betway.searchapp.presentation.ui.common.HtmlText
+import za.co.betway.searchapp.presentation.ui.detail.component.AnswerItem
+import za.co.betway.searchapp.presentation.ui.detail.component.AnswersHeader
+import za.co.betway.searchapp.presentation.ui.detail.component.AuthorSection
+import za.co.betway.searchapp.presentation.ui.detail.component.DetailTopAppBar
+import za.co.betway.searchapp.presentation.ui.detail.component.InformationHeader
+import za.co.betway.searchapp.presentation.ui.detail.component.TagsRow
 
 @Composable
 fun DetailScreen(
     question: Question,
+    onBackClick: () -> Unit,
     viewModel: DetailViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    var selectedFilter by remember { mutableStateOf(AnswerFilter.Votes) }
 
     LaunchedEffect(question) {
         viewModel.loadAnswers(question.id)
     }
 
-    Column(
+    Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Text(question.title, style = AppTypography.titleLarge)
-        Spacer(modifier = Modifier.height(8.dp))
+            .background(surfaceContainerLowestLight),
+        topBar = {
+            DetailTopAppBar(onBackClick = onBackClick)
+        }
+    ) { innerPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .navigationBarsPadding()
+        ) {
+            item {
+                InformationHeader(question)
+                Spacer(Modifier.height(8.dp))
+            }
 
-        HtmlText(html = question.body)
+            item {
+                TagsRow(question.tags)
+                Spacer(Modifier.height(8.dp))
+            }
 
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            "Asked ${question.formattedCreationDate()} by ${question.author.name}",
-            style = AppTypography.bodySmall
-        )
-        Text(
-            "Votes: ${question.votes} | Views: ${question.views} | Answers: ${question.answersCount}",
-            style = AppTypography.bodySmall
-        )
+            item {
+                AuthorSection(question)
+                Spacer(Modifier.height(16.dp))
+            }
 
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("Answers", style = AppTypography.titleMedium)
+            when (uiState) {
+                is DetailUiState.Loading -> {
+                    item {
+                        DefaultAppScreen(message = "Loading answers...", showProgress = true)
+                    }
+                }
 
-        when (uiState) {
-            is DetailUiState.Loading -> DefaultAppScreen(message = "Loading answers...", showProgress = true)
-            is DetailUiState.Error -> DefaultAppScreen(message = (uiState as DetailUiState.Error).message)
-            is DetailUiState.Success -> {
-                val answers = (uiState as DetailUiState.Success).answers
-                LazyColumn {
-                    items(answers) { answer ->
-                        Column(modifier = Modifier.padding(8.dp)) {
-                            HtmlText(html = answer.body)
-                            Text("Votes: ${answer.votes}", style = AppTypography.bodySmall)
+                is DetailUiState.Error -> {
+                    item {
+                        DefaultAppScreen(message = (uiState as DetailUiState.Error).message)
+                    }
+                }
+
+                is DetailUiState.Success -> {
+                    val answers = (uiState as DetailUiState.Success).answers
+                    val sortedAnswers = when (selectedFilter) {
+                        AnswerFilter.Active -> answers.sortedByDescending { it.creationDate }
+                        AnswerFilter.Oldest -> answers.sortedBy { it.creationDate }
+                        AnswerFilter.Votes -> answers.sortedByDescending { it.votes }
+                    }
+
+                    item {
+                        AnswersHeader(
+                            answerCount = answers.size,
+                            selectedFilter = selectedFilter,
+                            onFilterSelected = { selectedFilter = it }
+                        )
+                    }
+
+                    itemsIndexed(sortedAnswers) { index, answer ->
+                        AnswerItem(answer = answer)
+                        if (answers.size > 1 && index < answers.lastIndex) {
+                            HorizontalDivider(thickness = 1.dp)
                         }
                     }
                 }

@@ -13,6 +13,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Question(
     val id: Long,
+    val tags: List<String>,
     val title: String,
     val body: String,
     val answersCount: Int,
