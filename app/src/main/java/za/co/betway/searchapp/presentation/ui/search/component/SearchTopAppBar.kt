@@ -7,7 +7,6 @@
 
 package za.co.betway.searchapp.presentation.ui.search.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,7 +14,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -23,6 +21,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -36,8 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import za.co.betway.searchapp.R
 import za.co.betway.searchapp.presentation.theme.AppTheme
-import za.co.betway.searchapp.presentation.theme.primaryContainerLightMediumContrast
-import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
+import za.co.betway.searchapp.presentation.theme.Orange
 
 @Composable
 fun SearchTopAppBar(
@@ -47,9 +45,7 @@ fun SearchTopAppBar(
     onMenuClick: () -> Unit
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(surfaceContainerLowestLight)
+        modifier = Modifier.fillMaxWidth()
     ) {
         Row(
             modifier = Modifier
@@ -59,20 +55,20 @@ fun SearchTopAppBar(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             IconButton(onClick = onMenuClick) {
-                Icon(painter = painterResource(R.drawable.ic_menu), contentDescription = "Menu")
+                Icon(
+                    painter = painterResource(R.drawable.ic_menu),
+                    contentDescription = "Menu",
+                    tint = MaterialTheme.colorScheme.onSurface
+                )
             }
-            Image(
-                painter = painterResource(id = R.drawable.logo),
-                contentDescription = "Logo",
-                modifier = Modifier.size(100.dp)
-            )
+            ThemedLogo()
             Spacer(modifier = Modifier.width(48.dp))
         }
 
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(primaryContainerLightMediumContrast)
+                .background(Orange)
         ) {
             OutlinedTextField(
                 value = query,
@@ -87,18 +83,36 @@ fun SearchTopAppBar(
                         }
                     }
                 },
-                placeholder = { Text("Search...") },
+                placeholder = {
+                    Text(
+                        "Search...",
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                    )
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
-                    .clip(RoundedCornerShape(24.dp))
-                    .background(Color.White),
+                    .clip(RoundedCornerShape(24.dp)),
                 colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White,
-                    disabledContainerColor = Color.White,
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    disabledContainerColor = MaterialTheme.colorScheme.surface,
+
                     focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
+                    unfocusedIndicatorColor = Color.Transparent,
+
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    disabledTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
+                    cursorColor = MaterialTheme.colorScheme.primary,
+
+                    focusedLeadingIconColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedLeadingIconColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTrailingIconColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTrailingIconColor = MaterialTheme.colorScheme.onSurface,
+
+                    focusedPlaceholderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                    unfocusedPlaceholderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                 )
             )
         }

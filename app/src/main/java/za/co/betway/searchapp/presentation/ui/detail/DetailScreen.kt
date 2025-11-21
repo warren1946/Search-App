@@ -7,7 +7,6 @@
 
 package za.co.betway.searchapp.presentation.ui.detail
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -29,7 +28,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import za.co.betway.searchapp.domain.model.Question
-import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
 import za.co.betway.searchapp.presentation.ui.detail.component.AnswerItem
 import za.co.betway.searchapp.presentation.ui.detail.component.AnswersHeader
 import za.co.betway.searchapp.presentation.ui.detail.component.AuthorSection
@@ -64,9 +62,7 @@ fun DetailScreen(
     }
 
     Scaffold(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(surfaceContainerLowestLight),
+        modifier = Modifier.fillMaxSize(),
         topBar = {
             DetailTopAppBar("More Info", onBackClick = onBackClick)
         }

@@ -18,14 +18,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import za.co.betway.searchapp.domain.model.Author
 import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.theme.AppTypography
-import za.co.betway.searchapp.presentation.theme.outlineLightHighContrast
 import za.co.betway.searchapp.presentation.ui.shared.component.HtmlText
 import za.co.betway.searchapp.presentation.ui.shared.component.mapper.decodeHtml
 import za.co.betway.searchapp.presentation.utils.toRelativeTime
@@ -37,28 +35,38 @@ fun InformationHeader(question: Question) {
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        Text(question.title.decodeHtml(), style = AppTypography.titleLarge)
+        Text(
+            text = question.title.decodeHtml(),
+            style = AppTypography.titleLarge,
+            color = MaterialTheme.colorScheme.onSurface
+        )
 
         Spacer(Modifier.height(8.dp))
         Row(modifier = Modifier.fillMaxWidth()) {
             Text(
                 text = "Asked ",
-                style = AppTypography.bodySmall.copy(color = outlineLightHighContrast.copy(alpha = 0.6f))
+                style = AppTypography.bodySmall.copy(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
             )
             Text(
                 text = question.creationDate.toRelativeTime(),
-                style = AppTypography.bodySmall.copy(fontWeight = FontWeight.Bold)
+                style = AppTypography.bodySmall.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             )
 
             Spacer(Modifier.weight(1f))
 
             Text(
                 text = "Viewed ",
-                style = AppTypography.bodySmall.copy(color = Color.Gray.copy(alpha = 0.6f))
+                style = AppTypography.bodySmall.copy(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
             )
             Text(
                 text = "${question.views} times",
-                style = AppTypography.bodySmall.copy(fontWeight = FontWeight.Bold)
+                style = AppTypography.bodySmall.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             )
         }
 

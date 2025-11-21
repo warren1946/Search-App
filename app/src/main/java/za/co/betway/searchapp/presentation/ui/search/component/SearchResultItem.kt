@@ -22,7 +22,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,8 +30,8 @@ import za.co.betway.searchapp.data.remote.mapper.formattedCreationDate
 import za.co.betway.searchapp.domain.model.Author
 import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.theme.AppTypography
-import za.co.betway.searchapp.presentation.theme.primaryContainerLightMediumContrast
-import za.co.betway.searchapp.presentation.theme.surfaceDark
+import za.co.betway.searchapp.presentation.theme.Blue
+import za.co.betway.searchapp.presentation.theme.Orange
 import za.co.betway.searchapp.presentation.ui.shared.component.HtmlText
 import za.co.betway.searchapp.presentation.ui.shared.component.mapper.decodeHtml
 
@@ -50,24 +49,32 @@ fun SearchResultItem(
         Icon(
             painter = painterResource(id = R.drawable.ic_check),
             contentDescription = "Answered",
-            tint = primaryContainerLightMediumContrast,
+            tint = Orange,
             modifier = Modifier.size(24.dp)
         )
         Spacer(modifier = Modifier.width(8.dp))
         Column(
             modifier = Modifier.weight(1f)
         ) {
-            Text("Q: ${question.title.decodeHtml()}", style = AppTypography.titleMedium, color = Color.Blue)
-            HtmlText(html = question.body, modifier = Modifier.padding(top = 4.dp))
+            Text(
+                text = "Q: ${question.title.decodeHtml()}",
+                style = AppTypography.titleMedium,
+                color = Blue
+            )
+            HtmlText(
+                html = question.body,
+                modifier = Modifier.padding(top = 4.dp)
+            )
             Spacer(modifier = Modifier.height(10.dp))
             Row {
                 Text(
                     text = "asked ${question.formattedCreationDate()} by ",
-                    style = AppTypography.bodySmall
+                    style = AppTypography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
                     text = question.author.name.decodeHtml(),
-                    style = AppTypography.bodySmall.copy(color = Color.Blue)
+                    style = AppTypography.bodySmall.copy(color = Blue)
                 )
             }
         }
@@ -76,16 +83,28 @@ fun SearchResultItem(
             horizontalAlignment = Alignment.Start,
             modifier = Modifier.widthIn(min = 60.dp)
         ) {
-            Text("${question.answersCount} answers", style = AppTypography.bodySmall)
-            Text("${question.votes} votes", style = AppTypography.bodySmall)
-            Text("${question.views} views", style = AppTypography.bodySmall)
+            Text(
+                text = "${question.answersCount} answers",
+                style = AppTypography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = "${question.votes} votes",
+                style = AppTypography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = "${question.views} views",
+                style = AppTypography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Spacer(modifier = Modifier.width(8.dp))
         Icon(
+            modifier = Modifier.size(24.dp),
             painter = painterResource(id = R.drawable.ic_arrow_right),
             contentDescription = "Go to detail",
-            tint = surfaceDark,
-            modifier = Modifier.size(24.dp)
+            tint = MaterialTheme.colorScheme.onSurface
         )
     }
 }

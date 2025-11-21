@@ -7,7 +7,6 @@
 
 package za.co.betway.searchapp.presentation.ui.shared.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,9 +26,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import za.co.betway.searchapp.presentation.theme.AppTypography
-import za.co.betway.searchapp.presentation.theme.inverseSurfaceLightMediumContrast
-import za.co.betway.searchapp.presentation.theme.onTertiaryDark
-import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
 
 @Composable
 fun DefaultAppScreen(
@@ -38,9 +35,7 @@ fun DefaultAppScreen(
     actionLabel: String? = null
 ) {
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(surfaceContainerLowestLight),
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.TopCenter
     ) {
         Column(
@@ -52,7 +47,7 @@ fun DefaultAppScreen(
         ) {
             Spacer(modifier = Modifier.height(20.dp))
             if (showProgress) {
-                CircularProgressIndicator(color = inverseSurfaceLightMediumContrast)
+                CircularProgressIndicator()
             } else {
                 Spacer(modifier = Modifier.height(40.dp))
             }
@@ -62,7 +57,7 @@ fun DefaultAppScreen(
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = message,
-                color = onTertiaryDark,
+                color = MaterialTheme.colorScheme.onSurface,
                 style = AppTypography.headlineSmall,
                 textAlign = TextAlign.Center
             )

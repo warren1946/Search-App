@@ -22,7 +22,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -32,7 +31,7 @@ import za.co.betway.searchapp.R
 import za.co.betway.searchapp.domain.model.Answer
 import za.co.betway.searchapp.domain.model.Author
 import za.co.betway.searchapp.presentation.theme.AppTypography
-import za.co.betway.searchapp.presentation.theme.primaryContainerLightMediumContrast
+import za.co.betway.searchapp.presentation.theme.Orange
 import za.co.betway.searchapp.presentation.ui.shared.component.HtmlText
 import za.co.betway.searchapp.presentation.utils.toFormattedDateTime
 
@@ -55,19 +54,21 @@ fun AnswerItem(
             Text(
                 text = "${answer.votes}",
                 style = AppTypography.bodySmall,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurface
             )
             Text(
                 text = "Votes",
                 style = AppTypography.bodySmall,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurface
             )
             Spacer(Modifier.height(4.dp))
             Icon(
                 modifier = Modifier.size(24.dp),
                 painter = painterResource(id = R.drawable.ic_check),
                 contentDescription = "Answered",
-                tint = primaryContainerLightMediumContrast
+                tint = Orange
             )
         }
 
@@ -82,11 +83,14 @@ fun AnswerItem(
             Row {
                 Text(
                     text = "Asked ",
-                    style = AppTypography.bodySmall.copy(color = Color.Gray.copy(alpha = 0.5f))
+                    style = AppTypography.bodySmall.copy(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
                 )
                 Text(
                     text = answer.creationDate.toFormattedDateTime(),
-                    style = AppTypography.bodySmall.copy(fontWeight = FontWeight.Bold)
+                    style = AppTypography.bodySmall.copy(
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
                 )
             }
             Spacer(Modifier.height(4.dp))

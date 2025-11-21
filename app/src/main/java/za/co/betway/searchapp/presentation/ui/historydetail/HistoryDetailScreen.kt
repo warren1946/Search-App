@@ -60,7 +60,6 @@ fun HistoryDetailScreen(
                     HorizontalDivider(thickness = 2.dp)
                 }
 
-
                 itemsIndexed(answers) { index, answer ->
                     AnswerItem(answer)
                     if (answers.size > 1 && index < answers.lastIndex) {
