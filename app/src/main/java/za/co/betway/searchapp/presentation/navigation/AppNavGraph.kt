@@ -7,20 +7,27 @@
 
 package za.co.betway.searchapp.presentation.navigation
 
+import androidx.compose.material3.DrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import kotlinx.coroutines.launch
 import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.ui.detail.DetailScreen
+import za.co.betway.searchapp.presentation.ui.history.HistoryScreen
 import za.co.betway.searchapp.presentation.ui.search.SearchScreen
 import za.co.betway.searchapp.presentation.ui.splash.SplashScreen
 
 @Composable
 fun AppNavGraph(
     navController: NavHostController,
-    onExitApp: () -> Unit
+    onExitApp: () -> Unit,
+    drawerState: DrawerState
 ) {
+    val scope = rememberCoroutineScope()
+
     NavHost(
         navController = navController,
         startDestination = "splash"
@@ -41,7 +48,7 @@ fun AppNavGraph(
                     navController.navigateToDetail(question)
                 },
                 onMenuClick = {
-                    // TODO: hook up drawer or menu action
+                    scope.launch { drawerState.open() }
                 }
             )
         }
@@ -51,6 +58,11 @@ fun AppNavGraph(
                     ?.savedStateHandle
                     ?.get<Question>(QUESTION_ARG_KEY)
                     ?: return@composable,
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable("history") {
+            HistoryScreen(
                 onBackClick = { navController.popBackStack() }
             )
         }

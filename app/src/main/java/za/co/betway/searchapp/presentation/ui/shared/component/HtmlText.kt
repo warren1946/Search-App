@@ -5,7 +5,7 @@
  * No warranty provided.
  */
 
-package za.co.betway.searchapp.presentation.ui.common
+package za.co.betway.searchapp.presentation.ui.shared.component
 
 import android.graphics.Typeface
 import android.text.Html

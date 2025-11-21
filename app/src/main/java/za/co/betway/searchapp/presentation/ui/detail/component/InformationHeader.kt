@@ -26,7 +26,7 @@ import za.co.betway.searchapp.domain.model.Author
 import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.theme.AppTypography
 import za.co.betway.searchapp.presentation.theme.outlineLightHighContrast
-import za.co.betway.searchapp.presentation.ui.common.HtmlText
+import za.co.betway.searchapp.presentation.ui.shared.component.HtmlText
 import za.co.betway.searchapp.presentation.utils.toRelativeTime
 
 @Composable

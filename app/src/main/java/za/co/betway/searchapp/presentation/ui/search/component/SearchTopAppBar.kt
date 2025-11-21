@@ -69,7 +69,6 @@ fun SearchTopAppBar(
             Spacer(modifier = Modifier.width(48.dp))
         }
 
-        // Second row: search field
         Column(
             modifier = Modifier
                 .fillMaxWidth()
