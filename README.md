@@ -37,4 +37,9 @@ This app is built with **Jetpack Compose**, **Hilt**, **Room**, and **Clean Arch
     - UI: Compose screens (`SearchScreen`, `DetailScreen`, `HistoryScreen`, `HistoryDetailScreen`)
     - Shared components: `DetailTopAppBar`, `TagsRow`, `AuthorSection`, etc.
 
+## Side Note
+
+- **Code** working copy is in the master/develop branch
+- I created a workflow to automatically run tests on pull requests to any branch.
+- 
 ---
