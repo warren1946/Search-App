@@ -13,10 +13,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,11 +35,14 @@ fun AuthorSection(question: Question) {
         Row {
             Text(
                 text = "Asked ",
-                style = AppTypography.bodySmall.copy(color = Color.Gray.copy(alpha = 0.6f))
+                style = AppTypography.bodySmall.copy(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
             )
             Text(
                 text = question.creationDate.toFormattedDateTime(),
-                style = AppTypography.bodySmall.copy(fontWeight = FontWeight.Bold)
+                style = AppTypography.bodySmall.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             )
         }
 

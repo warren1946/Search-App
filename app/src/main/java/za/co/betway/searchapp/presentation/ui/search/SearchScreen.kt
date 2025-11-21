@@ -7,7 +7,6 @@
 
 package za.co.betway.searchapp.presentation.ui.search
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,8 +26,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import za.co.betway.searchapp.domain.model.Question
-import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
-import za.co.betway.searchapp.presentation.theme.surfaceDimDarkHighContrast
 import za.co.betway.searchapp.presentation.ui.search.component.SearchResultItem
 import za.co.betway.searchapp.presentation.ui.search.component.SearchTopAppBar
 import za.co.betway.searchapp.presentation.ui.shared.component.DefaultAppScreen
@@ -50,11 +47,7 @@ fun SearchScreen(
         NoInternetDialog(onDismiss = { showNoInternetDialog = false })
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(surfaceContainerLowestLight)
-    ) {
+    Column(modifier = Modifier.fillMaxSize()) {
         SearchTopAppBar(
             query = query,
             onQueryChange = { newQuery ->
@@ -90,10 +83,7 @@ fun SearchScreen(
                                         .clickable { onNavigateDetail(question) }
                                         .padding(vertical = 4.dp)
                                 )
-                                HorizontalDivider(
-                                    color = surfaceDimDarkHighContrast.copy(alpha = 0.2f),
-                                    thickness = 1.dp
-                                )
+                                HorizontalDivider(thickness = 1.dp)
                             }
                         }
                     }

@@ -15,11 +15,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import za.co.betway.searchapp.presentation.theme.AppTypography
-import za.co.betway.searchapp.presentation.theme.onPrimaryLight
-import za.co.betway.searchapp.presentation.theme.primaryLight
+import za.co.betway.searchapp.presentation.theme.Orange
 
 @Composable
 fun TagsRow(tags: List<String>) {
@@ -31,13 +31,13 @@ fun TagsRow(tags: List<String>) {
         tags.forEach { tag ->
             Surface(
                 shape = RoundedCornerShape(6.dp),
-                color = primaryLight.copy(alpha = 0.6f)
+                color = Orange
             ) {
                 Text(
                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                     text = tag,
                     style = AppTypography.bodySmall,
-                    color = onPrimaryLight
+                    color = Color.White
                 )
             }
         }

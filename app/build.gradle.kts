@@ -104,6 +104,7 @@ dependencies {
     ksp(libs.room.compiler)
     implementation(libs.coil.compose)
     implementation(libs.compose.material.icons)
+    implementation(libs.accompanist.systemuicontroller)
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(kotlin("test"))

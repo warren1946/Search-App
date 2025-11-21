@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,16 +30,24 @@ import za.co.betway.searchapp.presentation.ui.shared.component.mapper.decodeHtml
 fun AuthorInfo(author: Author, modifier: Modifier = Modifier) {
     Row(verticalAlignment = Alignment.Top) {
         AsyncImage(
-            model = author.profileImage,
-            contentDescription = "Author profile",
             modifier = modifier
                 .size(60.dp)
-                .clip(CircleShape)
+                .clip(CircleShape),
+            model = author.profileImage,
+            contentDescription = "Author profile"
         )
         Spacer(modifier.width(8.dp))
         Column {
-            Text(author.name.decodeHtml(), style = AppTypography.bodySmall)
-            Text("${author.reputation}", style = AppTypography.bodySmall.copy(fontWeight = FontWeight.Bold))
+            Text(
+                text = author.name.decodeHtml(),
+                style = AppTypography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = "${author.reputation}",
+                style = AppTypography.bodySmall.copy(fontWeight = FontWeight.Bold),
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
     }
 }

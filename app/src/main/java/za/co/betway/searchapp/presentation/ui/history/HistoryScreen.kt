@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import za.co.betway.searchapp.domain.mapper.toDomain
+import za.co.betway.searchapp.presentation.theme.AppTypography
 import za.co.betway.searchapp.presentation.ui.search.component.SearchResultItem
 import za.co.betway.searchapp.presentation.ui.shared.component.DetailTopAppBar
 
@@ -43,7 +45,13 @@ fun HistoryScreen(navController: NavHostController, viewModel: HistoryViewModel 
                     .fillMaxSize()
                     .padding(innerPadding),
                 contentAlignment = Alignment.Center
-            ) { Text("No history yet.") }
+            ) {
+                Text(
+                    text = "No history yet.",
+                    style = AppTypography.headlineSmall,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
         } else {
             LazyColumn(
                 modifier = Modifier
