@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 Warren Mtawu.
+ * Open Source under the MIT License.
+ * Permission granted for use, modification, and distribution with attribution.
+ * No warranty provided.
+ */
+
 package za.co.betway.searchapp.presentation.ui.splash
 
 import androidx.compose.runtime.Composable
@@ -5,7 +12,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import za.co.betway.searchapp.presentation.ui.common.DefaultAppScreen
+import za.co.betway.searchapp.presentation.ui.shared.component.DefaultAppScreen
 
 @Composable
 fun SplashScreen(

@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import za.co.betway.searchapp.data.remote.mapper.decodeHtml
 import za.co.betway.searchapp.domain.model.Author
 import za.co.betway.searchapp.presentation.theme.AppTypography
 
@@ -36,7 +37,7 @@ fun AuthorInfo(author: Author, modifier: Modifier = Modifier) {
         )
         Spacer(modifier.width(8.dp))
         Column {
-            Text(author.name, style = AppTypography.bodySmall)
+            Text(author.name.decodeHtml(), style = AppTypography.bodySmall)
             Text("${author.reputation}", style = AppTypography.bodySmall.copy(fontWeight = FontWeight.Bold))
         }
     }

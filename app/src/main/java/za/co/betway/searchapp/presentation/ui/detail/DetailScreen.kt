@@ -30,14 +30,14 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
-import za.co.betway.searchapp.presentation.ui.common.DefaultAppScreen
-import za.co.betway.searchapp.presentation.ui.common.NoInternetDialog
 import za.co.betway.searchapp.presentation.ui.detail.component.AnswerItem
 import za.co.betway.searchapp.presentation.ui.detail.component.AnswersHeader
 import za.co.betway.searchapp.presentation.ui.detail.component.AuthorSection
 import za.co.betway.searchapp.presentation.ui.detail.component.DetailTopAppBar
 import za.co.betway.searchapp.presentation.ui.detail.component.InformationHeader
 import za.co.betway.searchapp.presentation.ui.detail.component.TagsRow
+import za.co.betway.searchapp.presentation.ui.shared.component.DefaultAppScreen
+import za.co.betway.searchapp.presentation.ui.shared.component.NoInternetDialog
 import za.co.betway.searchapp.presentation.utils.NetworkUtils
 
 @Composable
@@ -46,9 +46,9 @@ fun DetailScreen(
     onBackClick: () -> Unit,
     viewModel: DetailViewModel = hiltViewModel()
 ) {
+    val context = LocalContext.current
     val uiState by viewModel.uiState.collectAsState()
     var selectedFilter by remember { mutableStateOf(AnswerFilter.Votes) }
-    val context = LocalContext.current
     var showNoInternetDialog by remember { mutableStateOf(false) }
 
     if (showNoInternetDialog) {
@@ -61,7 +61,6 @@ fun DetailScreen(
         } else {
             showNoInternetDialog = true
         }
-
     }
 
     Scaffold(

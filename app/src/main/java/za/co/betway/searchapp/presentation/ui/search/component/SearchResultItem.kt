@@ -27,13 +27,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import za.co.betway.searchapp.R
+import za.co.betway.searchapp.data.remote.mapper.decodeHtml
 import za.co.betway.searchapp.data.remote.mapper.formattedCreationDate
 import za.co.betway.searchapp.domain.model.Author
 import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.theme.AppTypography
 import za.co.betway.searchapp.presentation.theme.primaryContainerLightMediumContrast
 import za.co.betway.searchapp.presentation.theme.surfaceDark
-import za.co.betway.searchapp.presentation.ui.common.HtmlText
+import za.co.betway.searchapp.presentation.ui.shared.component.HtmlText
 
 @Composable
 fun SearchResultItem(
@@ -56,7 +57,7 @@ fun SearchResultItem(
         Column(
             modifier = Modifier.weight(1f)
         ) {
-            Text("Q: ${question.title}", style = AppTypography.titleMedium, color = Color.Blue)
+            Text("Q: ${question.title.decodeHtml()}", style = AppTypography.titleMedium, color = Color.Blue)
             HtmlText(html = question.body, modifier = Modifier.padding(top = 4.dp))
             Spacer(modifier = Modifier.height(10.dp))
             Row {
@@ -65,7 +66,7 @@ fun SearchResultItem(
                     style = AppTypography.bodySmall
                 )
                 Text(
-                    text = question.author.name,
+                    text = question.author.name.decodeHtml(),
                     style = AppTypography.bodySmall.copy(color = Color.Blue)
                 )
             }

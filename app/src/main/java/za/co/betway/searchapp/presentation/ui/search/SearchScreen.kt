@@ -29,10 +29,10 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
 import za.co.betway.searchapp.presentation.theme.surfaceDimDarkHighContrast
-import za.co.betway.searchapp.presentation.ui.common.DefaultAppScreen
-import za.co.betway.searchapp.presentation.ui.common.NoInternetDialog
 import za.co.betway.searchapp.presentation.ui.search.component.SearchResultItem
 import za.co.betway.searchapp.presentation.ui.search.component.SearchTopAppBar
+import za.co.betway.searchapp.presentation.ui.shared.component.DefaultAppScreen
+import za.co.betway.searchapp.presentation.ui.shared.component.NoInternetDialog
 import za.co.betway.searchapp.presentation.utils.NetworkUtils
 
 @Composable
