@@ -7,7 +7,6 @@
 
 package za.co.betway.searchapp.data.remote.mapper
 
-import androidx.core.text.HtmlCompat
 import za.co.betway.searchapp.data.remote.dto.answer.AnswerDto
 import za.co.betway.searchapp.data.remote.dto.search.QuestionDto
 import za.co.betway.searchapp.domain.model.Answer
@@ -55,5 +54,3 @@ fun Question.formattedCreationDate(): String {
     val formatter = DateTimeFormatter.ofPattern("MMM d ''yy").withZone(ZoneId.systemDefault())
     return formatter.format(instant)
 }
-
-fun String.decodeHtml(): String = HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()

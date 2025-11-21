@@ -33,10 +33,10 @@ import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
 import za.co.betway.searchapp.presentation.ui.detail.component.AnswerItem
 import za.co.betway.searchapp.presentation.ui.detail.component.AnswersHeader
 import za.co.betway.searchapp.presentation.ui.detail.component.AuthorSection
-import za.co.betway.searchapp.presentation.ui.detail.component.DetailTopAppBar
 import za.co.betway.searchapp.presentation.ui.detail.component.InformationHeader
 import za.co.betway.searchapp.presentation.ui.detail.component.TagsRow
 import za.co.betway.searchapp.presentation.ui.shared.component.DefaultAppScreen
+import za.co.betway.searchapp.presentation.ui.shared.component.DetailTopAppBar
 import za.co.betway.searchapp.presentation.ui.shared.component.NoInternetDialog
 import za.co.betway.searchapp.presentation.utils.NetworkUtils
 
@@ -57,7 +57,7 @@ fun DetailScreen(
 
     LaunchedEffect(question) {
         if (NetworkUtils.hasInternetConnection(context)) {
-            viewModel.loadAnswers(question.id)
+            viewModel.loadAnswers(question)
         } else {
             showNoInternetDialog = true
         }
@@ -68,7 +68,7 @@ fun DetailScreen(
             .fillMaxSize()
             .background(surfaceContainerLowestLight),
         topBar = {
-            DetailTopAppBar(onBackClick = onBackClick)
+            DetailTopAppBar("More Info", onBackClick = onBackClick)
         }
     ) { innerPadding ->
         LazyColumn(

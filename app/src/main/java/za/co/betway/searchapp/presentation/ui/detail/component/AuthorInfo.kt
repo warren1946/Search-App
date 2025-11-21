@@ -21,9 +21,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import za.co.betway.searchapp.data.remote.mapper.decodeHtml
 import za.co.betway.searchapp.domain.model.Author
 import za.co.betway.searchapp.presentation.theme.AppTypography
+import za.co.betway.searchapp.presentation.ui.shared.component.mapper.decodeHtml
 
 @Composable
 fun AuthorInfo(author: Author, modifier: Modifier = Modifier) {

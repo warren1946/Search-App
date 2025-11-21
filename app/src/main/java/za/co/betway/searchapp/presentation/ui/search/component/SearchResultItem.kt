@@ -27,7 +27,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import za.co.betway.searchapp.R
-import za.co.betway.searchapp.data.remote.mapper.decodeHtml
 import za.co.betway.searchapp.data.remote.mapper.formattedCreationDate
 import za.co.betway.searchapp.domain.model.Author
 import za.co.betway.searchapp.domain.model.Question
@@ -35,6 +34,7 @@ import za.co.betway.searchapp.presentation.theme.AppTypography
 import za.co.betway.searchapp.presentation.theme.primaryContainerLightMediumContrast
 import za.co.betway.searchapp.presentation.theme.surfaceDark
 import za.co.betway.searchapp.presentation.ui.shared.component.HtmlText
+import za.co.betway.searchapp.presentation.ui.shared.component.mapper.decodeHtml
 
 @Composable
 fun SearchResultItem(
