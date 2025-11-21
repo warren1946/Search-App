@@ -7,12 +7,15 @@
 
 package za.co.betway.searchapp.presentation.ui.search.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.DrawerState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
@@ -38,7 +41,11 @@ fun AppDrawer(
         drawerState = drawerState,
         drawerContent = {
             ModalDrawerSheet(
-                modifier = Modifier.widthIn(max = 300.dp)
+                modifier = Modifier
+                    .widthIn(max = 300.dp)
+                    .statusBarsPadding()
+                    .background(MaterialTheme.colorScheme.background),
+                drawerContentColor = MaterialTheme.colorScheme.onBackground
             ) {
                 Column(
                     modifier = Modifier

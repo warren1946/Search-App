@@ -13,9 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val StackOverflowLightColors = lightColorScheme(
     primary = Orange,
@@ -96,18 +94,6 @@ fun AppTheme(
 
         darkTheme -> StackOverflowDarkColors
         else -> StackOverflowLightColors
-    }
-    val systemUiController = rememberSystemUiController()
-
-    SideEffect {
-        systemUiController.setStatusBarColor(
-            color = colorScheme.primary,
-            darkIcons = !darkTheme
-        )
-        systemUiController.setNavigationBarColor(
-            color = colorScheme.surface,
-            darkIcons = !darkTheme
-        )
     }
 
     MaterialTheme(

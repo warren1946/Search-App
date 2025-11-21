@@ -37,8 +37,7 @@ import za.co.betway.searchapp.presentation.ui.shared.component.DetailTopAppBar
 fun HistoryScreen(navController: NavHostController, viewModel: HistoryViewModel = hiltViewModel()) {
     val items by viewModel.history.collectAsState()
 
-    Scaffold(
-        topBar = { DetailTopAppBar("Search History", onBackClick = { navController.popBackStack() }) }) { innerPadding ->
+    Scaffold(topBar = { DetailTopAppBar("Search History", onBackClick = { navController.popBackStack() }) }) { innerPadding ->
         if (items.isEmpty()) {
             Box(
                 modifier = Modifier
