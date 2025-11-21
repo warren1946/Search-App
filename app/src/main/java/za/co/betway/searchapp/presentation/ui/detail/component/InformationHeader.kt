@@ -27,6 +27,7 @@ import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.theme.AppTypography
 import za.co.betway.searchapp.presentation.theme.outlineLightHighContrast
 import za.co.betway.searchapp.presentation.ui.shared.component.HtmlText
+import za.co.betway.searchapp.presentation.ui.shared.component.mapper.decodeHtml
 import za.co.betway.searchapp.presentation.utils.toRelativeTime
 
 @Composable
@@ -36,7 +37,7 @@ fun InformationHeader(question: Question) {
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        Text(question.title, style = AppTypography.titleLarge)
+        Text(question.title.decodeHtml(), style = AppTypography.titleLarge)
 
         Spacer(Modifier.height(8.dp))
         Row(modifier = Modifier.fillMaxWidth()) {

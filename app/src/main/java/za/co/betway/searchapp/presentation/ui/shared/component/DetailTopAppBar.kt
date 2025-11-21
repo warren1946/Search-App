@@ -5,7 +5,7 @@
  * No warranty provided.
  */
 
-package za.co.betway.searchapp.presentation.ui.detail.component
+package za.co.betway.searchapp.presentation.ui.shared.component
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -29,11 +29,11 @@ import za.co.betway.searchapp.presentation.theme.AppTypography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailTopAppBar(onBackClick: () -> Unit) {
+fun DetailTopAppBar(title: String, onBackClick: () -> Unit) {
     Column {
         CenterAlignedTopAppBar(
             title = {
-                Text("More Info", style = AppTypography.titleMedium)
+                Text(title, style = AppTypography.titleMedium)
             },
             navigationIcon = {
                 Row(
@@ -58,5 +58,5 @@ fun DetailTopAppBar(onBackClick: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewDetailTopAppBar() {
-    DetailTopAppBar(onBackClick = {})
+    DetailTopAppBar("More Info", onBackClick = {})
 }

@@ -11,12 +11,15 @@ import androidx.compose.material3.DrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import kotlinx.coroutines.launch
 import za.co.betway.searchapp.domain.model.Question
 import za.co.betway.searchapp.presentation.ui.detail.DetailScreen
 import za.co.betway.searchapp.presentation.ui.history.HistoryScreen
+import za.co.betway.searchapp.presentation.ui.historydetail.HistoryDetailScreen
 import za.co.betway.searchapp.presentation.ui.search.SearchScreen
 import za.co.betway.searchapp.presentation.ui.splash.SplashScreen
 
@@ -61,10 +64,13 @@ fun AppNavGraph(
                 onBackClick = { navController.popBackStack() }
             )
         }
-        composable("history") {
-            HistoryScreen(
-                onBackClick = { navController.popBackStack() }
-            )
+        composable("history") { HistoryScreen(navController = navController) }
+        composable(
+            route = "history_detail/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.LongType })
+        ) { backStackEntry ->
+            val id = backStackEntry.arguments?.getLong("id") ?: return@composable
+            HistoryDetailScreen(questionId = id, navController = navController)
         }
     }
 }
