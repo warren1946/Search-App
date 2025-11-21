@@ -13,9 +13,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -27,8 +29,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import za.co.betway.searchapp.domain.model.Question
-import za.co.betway.searchapp.presentation.theme.surfaceContainerLowestLight
-import za.co.betway.searchapp.presentation.theme.surfaceDimDarkHighContrast
 import za.co.betway.searchapp.presentation.ui.search.component.SearchResultItem
 import za.co.betway.searchapp.presentation.ui.search.component.SearchTopAppBar
 import za.co.betway.searchapp.presentation.ui.shared.component.DefaultAppScreen
@@ -53,7 +53,9 @@ fun SearchScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(surfaceContainerLowestLight)
+            .statusBarsPadding()
+            .navigationBarsPadding()
+            .background(MaterialTheme.colorScheme.background)
     ) {
         SearchTopAppBar(
             query = query,
@@ -90,10 +92,7 @@ fun SearchScreen(
                                         .clickable { onNavigateDetail(question) }
                                         .padding(vertical = 4.dp)
                                 )
-                                HorizontalDivider(
-                                    color = surfaceDimDarkHighContrast.copy(alpha = 0.2f),
-                                    thickness = 1.dp
-                                )
+                                HorizontalDivider(thickness = 1.dp)
                             }
                         }
                     }
