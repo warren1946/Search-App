@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 Warren Mtawu.
+ * Open Source under the MIT License.
+ * Permission granted for use, modification, and distribution with attribution.
+ * No warranty provided.
+ */
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -7,6 +14,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     kotlin("kapt")
+    kotlin("plugin.parcelize")
 }
 
 hilt {
@@ -87,6 +95,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.junit.ktx)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.compose.ui.text.google.fonts)
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.room.runtime)
