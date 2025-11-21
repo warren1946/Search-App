@@ -12,6 +12,7 @@ This app is built with **Jetpack Compose**, **Hilt**, **Room**, and **Clean Arch
 - **Detail screen** showing question body, tags, author info, and answers.
 - **Modern UI** built with Jetpack Compose and Material3.
 - **Navigation Drawer** for easy access to History section and exiting the app.
+- **Theme** the app works on both dark and light modes
 - **Unit Tests** added to ensure code works.
 
 ### Newly Added
